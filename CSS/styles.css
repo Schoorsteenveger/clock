@@ -20,8 +20,9 @@ body {
 }
 
 p {
-    font-size: 16px;
-    color: rgb(164, 164, 164);
+    font-size: 1em;
+    color: rgb(255, 0, 0);
+    z-index: 200;
 }
 
 .wrapper, .header {
@@ -31,13 +32,12 @@ p {
     position: relative;  
 }
 
-.hand-hour, .hand-min, .hand-sec, .clock-body::before {
+.clock-body::before {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  
 }
 
 
@@ -52,7 +52,7 @@ p {
     -moz-box-shadow: inset 0 0 20px #000000;
     -webkit-box-shadow: inset 0 0 20px #000000;
     box-shadow:         inset 0 0 50px #4f2c2c;  
-    z-index: 6;
+    z-index: 1;
 }
 
 .clock-body::before {
@@ -67,7 +67,7 @@ p {
     z-index: 3;
     min-width: 50vmin;
     min-height: 50vmin;
-    z-index: 5;
+    z-index: 7;
 }
 
 .clock-body::after{
@@ -81,13 +81,13 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    z-index: 15;
+    z-index: 70;
     box-shadow:inset 0 0 9px #674930;
      
 }
 
 .clock-body .number {
-    --rotation:0;
+    --rotation: 0;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -112,42 +112,46 @@ p {
 .clock-body .number11 {--rotation: 330deg; }
 
 .clock-body .hand {
-    --rotation: 30;
+    /* --rotation: 0; */
     position: absolute;
-    width: 1.5%;
-    height: 35%;
+    /* width: 1.5%;
+    height: 35%; */
     left: 50%;
     bottom: 50%;
-    background-color: rgb(126, 126, 126);
-    z-index: 12;
+    background-color: rgb(152, 119, 37);
+    z-index:2;
     transform: translateX(-50%);
-    transform-origin: bottom; /*positie vanf roteren.*/
-    transform:translateX(-50%)rotate(calc(var(--rotation)* 1deg));
+    transform-origin: bottom; /*positie vanaf roteren.*/
+    /* transform:translateX(-50%)rotate(calc(var(--rotation)* 1deg)); */
 }
 
 .clock-body .hand::after {
     content: "";
-    border: solid rgb(255, 236, 130) 1px;
+    color: rgb(187, 124, 101);
     position: absolute;
-    z-index: 13;
+    z-index: 4;
     height: 100%;
+    width: 10%;
+    background-color: rgb(75, 75, 75);
 }
 
-.hand.sec {
-    width: 7px;
-    height: 25%;
+.clock-body .hand.seconds {
+    width: 0.5%;
+    height: 42%;
 }
-.hand.min {
-    width: 3px;
-    height: 43%;
+
+.clock-body .hand.minutes {
+    width: 1%;
+    height: 42%;
 }
-.hand.hour {
-    width: 10px;
+.clock-body .hand.hours{
+    width: 0.5em;
     height: 30%;
 }
 
 .number {
-    font-size: 3em;
+    font-size: 2em;
+    text-align: center;
     background-color: transparent;
 }
 
@@ -155,10 +159,11 @@ p {
     content: "";
     font-size: 1em;
     width: 0.3%;
-    height: 10%;
+    height: 5%;
     background-color: black;
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%,-50%);
+    z-index: 50;
+    /* transform: rotate(-50%,-50%); */
 }
